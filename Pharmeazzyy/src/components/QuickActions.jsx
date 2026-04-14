@@ -1,7 +1,21 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 
 const QuickActions = () => {
   const fileInputRef = useRef(null)
+  const [index,SetIndex]=useState();
+
+    const words = ['shampoo', 'medicine', 'health drinks'];
+    useEffect(()=>{
+        const interval = setInterval((prev)=>{
+            if(prev === words.length-1){
+                return 0;
+            }
+            else{
+                SetIndex(prev+1);
+            }
+        },2000);
+        return ()=> clearInterval(interval);
+    },[]);
 
   const handleUploadClick = () => {
     fileInputRef.current.click()
